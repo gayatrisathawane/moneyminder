@@ -1,7 +1,7 @@
 
-import mongoose from 'mongoose'
+import {Schema,model} from 'mongoose'
 
-const transactionSchema = new mongoose.Schema({
+const transactionSchema = new Schema({
 
     amount:{
         type:Number,
@@ -27,6 +27,6 @@ const transactionSchema = new mongoose.Schema({
 
 },{timestamps:true})
 
-const Transaction  = mongoose.model('Transaction',transactionSchema)
+const Transaction  =model('Transaction',transactionSchema)
 
 export default Transaction;
