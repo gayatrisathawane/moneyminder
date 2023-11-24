@@ -68,6 +68,19 @@ app.post('/api/transaction', async (req, res) => {
 
 })
 
+//GET api 
+
+app.get('/api/transactions',async(req,res)=>{
+
+    const allTransaction = await Transaction.find()
+
+    res.json({
+        success:true,
+        data:allTransaction,
+        message:"successfully get all transaction "
+    })
+})
+
 
 
 
