@@ -1,7 +1,7 @@
 
-import {Schema,model} from mongoose
+import mongoose from 'mongoose'
 
-const transactionSchema = new Schema({
+const transactionSchema = new mongoose.Schema({
 
     amount:{
         type:Number,
@@ -15,17 +15,18 @@ const transactionSchema = new Schema({
     },
     category:{
         type:String,
-        enum:["shopping","food","rent","entertainment","travel","other"]
+        enum:["shopping","food","rent","entertainment","travel","other"],
+        default:"other"
 
     },
     description:{
         type:String,
-        default:"other"
+       
     }
 
 
 },{timestamps:true})
 
-const Transaction  = model('Transaction',transactionSchema)
+const Transaction  = mongoose.model('Transaction',transactionSchema)
 
 export default Transaction;
