@@ -2,10 +2,10 @@ import User from './../models/User.model.js'
 
 const postapisignup = async (req, res) => {
 
-    const { name, passWord, email, address, mobileNo, bankName } = req.body
+    const { userName, passWord, email, address, mobileNo, bankName } = req.body
 
     const newUser = new User({
-        name, passWord, email, address, mobileNo, bankName
+        userName, passWord, email, address, mobileNo, bankName
 
     })
 
@@ -32,10 +32,10 @@ const postapisignup = async (req, res) => {
 
 const postapisignupv2 =async (req, res) => {
 
-    const { name, passWord, email, address, mobileNo, bankName } = req.body
+    const { userName, passWord, email, address, mobileNo, bankName } = req.body
 
     const newUser = new User({
-        name, passWord, email, address, mobileNo, bankName
+        userName, passWord, email, address, mobileNo, bankName
 
     })
 
