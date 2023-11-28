@@ -6,7 +6,7 @@ import User from './../models/User.model.js'
     const {userName,passWord,email,address,mobileNo,bankName}=req.body
 
     const newUser = new User({
-        userName,passWord,email,address,mobileNo,bankName
+        name,passWord,email,address,mobileNo,bankName
 
     })
 
