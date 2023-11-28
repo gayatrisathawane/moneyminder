@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Navbar from '../../component/Navbar/Navbar'
 import axios from 'axios'
 import "./Signup.css"
-import sign from './../../assets/signupbg.jpg'
+import sign from './../../assets/signupbg.jpg';
+import {Link} from 'react-router-dom'
 
 const Signup = () => {
   // userName,passWord,email,address,mobileNo,bankName
@@ -50,10 +51,9 @@ const Signup = () => {
 
     alert(response?.data?.message)
 
-    if (response?.data?.success) {
-
-      window.location.href = '/login'
-    }
+      if(response?.data?.success){
+        window.location.href='/login'
+      }
   }
 
 
@@ -130,8 +130,9 @@ const Signup = () => {
             <button className="btn btn-primary mt-3"
               type="button" onClick={signup}>SignUp</button>
           </div>
+
         </div>
-        <div className='col-md-2'></div>
+         <p><Link to='/login'>Have already account </Link></p>
       </div>
 
     </div>

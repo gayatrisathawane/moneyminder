@@ -85,7 +85,7 @@ const postapilogin = async (req, res) => {
     const user = await User.findOne({
         email: email,
         passWord: passWord
-    }).select("name email mobile")
+    }).select("userName email mobileNo")
 
     if (user) {
         return res.json({
