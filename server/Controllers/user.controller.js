@@ -1,46 +1,112 @@
 import User from './../models/User.model.js'
 
- const postapisignup = async(req,res)=>{
+const postapisignup = async (req, res) => {
 
-
-    const {userName,passWord,email,address,mobileNo,bankName}=req.body
+    const { name, passWord, email, address, mobileNo, bankName } = req.body
 
     const newUser = new User({
-        name,passWord,email,address,mobileNo,bankName
+        name, passWord, email, address, mobileNo, bankName
 
     })
 
-    try{
+    try {
         const savedUser = await newUser.save()
 
         return res.status(201).json({
-            success:true,
-            data:savedUser,
-            message:"user register successfully"
+            success: true,
+            data: savedUser,
+            message: "user register successfully"
 
         })
 
-    }catch(e){
+    } catch (e) {
         return res.json({
-            success:true,
-            message:(e.message)
+            success: true,
+            message: (e.message)
         })
-     }
+    }
 
-      
+
 }
 
-const getapisignup =  async(req,res) => {
 
-    const {_id}= req.params
+const postapisignupv2 =async (req, res) => {
 
-    const  fetchUser = await User.findOne({_id:_id})
-    
+    const { name, passWord, email, address, mobileNo, bankName } = req.body
+
+    const newUser = new User({
+        name, passWord, email, address, mobileNo, bankName
+
+    })
+
+    try {
+        const savedUser = await newUser.save()
+
+        return res.status(201).json({
+            success: true,
+            data: savedUser,
+            message: "user register successfully"
+
+        })
+
+    } catch (e) {
+        return res.json({
+            success: true,
+            message: (e.message)
+        })
+    }
+
+
+}
+const getapisignup = async (req, res) => {
+
+    const { _id } = req.params
+
+    const fetchUser = await User.findOne({ _id: _id })
+
     res.status(200).json({
-        success:true,
-        data:fetchUser,
-        message:"user fetch successfully"
+        success: true,
+        data: fetchUser,
+        message: "user fetch successfully"
     })
 }
 
-export {postapisignup,getapisignup}
+const postapilogin = async (req, res) => {
+
+    const { email, passWord } = req.body
+
+    if (!email || !passWord) {
+        return res.json({
+            success: false,
+            message: "please provide email and password"
+        })
+    }
+
+    const user = await User.findOne({
+        email: email,
+        passWord: passWord
+    }).select("name email mobile")
+
+    if (user) {
+        return res.json({
+            success: true,
+            data: user,
+            message: "login successfully"
+
+        })
+    }
+    else {
+        return res.json({
+            success: false,
+            data: null,
+            message: "Invalid credentials"
+        })
+    }
+
+
+
+
+
+}
+
+export { postapisignup, getapisignup, postapilogin,postapisignupv2 }

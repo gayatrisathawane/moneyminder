@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 const app = express();
 import {postapitransaction,getapitransacation,getapihealth} from './Controllers/transacation.js';
-import {postapisignup,getapisignup} from './Controllers/user.controller.js'
+import {postapisignup,getapisignup,postapilogin,postapisignupv2} from './Controllers/user.controller.js'
 
 
 
@@ -39,8 +39,9 @@ app.get('/api/transactions',getapitransacation)
 
 
 app.post('/api/v1/signups',postapisignup)
+app.post('/api/v2/signups',postapisignupv2)
 app.get('/api/v1/signups/:_id',getapisignup)
-
+app.post('/api/v1/logins',postapilogin)
 
 
 
