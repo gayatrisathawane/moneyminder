@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
 
 const Navbar = () => {
+  const[user,setUser]= useState({})
+
+  
+
+  
+  useEffect(()=>{
+
+   const storeUser= JSON.parse(localStorage.getItem("userMoneyMinder") ||"{}")
+    setUser(storeUser)
+   
+
+  },[])
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-primary">
@@ -16,7 +28,7 @@ const Navbar = () => {
           <Link className="nav-link text-light" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-light" to="/mytransacation">MyTransactions</Link>
+          <Link className="nav-link text-light" to="/mytransacation"> 💵 MyTransactions</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link text-light" to="/signup">SignUp</Link>
@@ -24,7 +36,9 @@ const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link text-light " to="/login">Login</Link>
         </li>
+        
       </ul>
+      <span className='text-light'> 👋 Hello,{user.userName || 'User!'}</span>
     </div>
   </div>
 </nav>

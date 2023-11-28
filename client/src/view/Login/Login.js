@@ -54,7 +54,7 @@ const Login = () => {
 
            <div class="d-grid gap-2">
             <button className="btn btn-primary mt-3"
-              type="button" onClick={login}>SignUp</button>
+              type="button" onClick={login}>Login ➡</button>
           </div>
             </div>
 
