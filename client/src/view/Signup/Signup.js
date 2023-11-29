@@ -66,7 +66,6 @@ const Signup = () => {
         window.location.href="/"
 
       }
-
   },[])
 
 
