@@ -8,12 +8,13 @@ const Navbar = () => {
 
   
   useEffect(()=>{
-
    const storeUser= JSON.parse(localStorage.getItem("userMoneyMinder") ||"{}")
     setUser(storeUser)
-   
-
+  
   },[])
+
+  
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-primary">

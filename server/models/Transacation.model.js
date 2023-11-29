@@ -6,8 +6,6 @@ const transactionSchema = new Schema({
     AcoountHoldelder:{
         type:Schema.Types.ObjectId,
         ref:'User',
-        required:true
-
     },
 
     amount:{
