@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 const app = express();
-import {postapitransaction,getapitransacation,getapihealth} from './Controllers/transacation.js';
+import {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser} from './Controllers/transacation.js';
 import {postapisignup,getapisignup,postapilogin,postapisignupv2} from './Controllers/user.controller.js'
 
 
@@ -28,7 +28,10 @@ app.get('/api/health',getapihealth )
 
 //post api 
 
-app.post('/api/transaction', postapitransaction)
+// app.post('/api/transaction', postapitransaction)
+app.post('/api/v2/transaction', postapitransactionv2) //user add 
+app.get('/api/v1/transactions/:_id',getapitransacationUser)
+
 
 //GET api 
 

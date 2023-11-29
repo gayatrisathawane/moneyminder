@@ -11,13 +11,50 @@ const getapihealth =async (req, res) => {
 
 }
 
-const postapitransaction = async (req, res) => {
+// const postapitransaction = async (req, res) => {
 
-    const { amount, type, category, description } = req.body
+//     const { amount, type, category, description } = req.body
+
+//     const newTransacation = new Transaction({
+
+//         amount, type, category, description
+
+
+//     })
+
+
+//     try {
+//         const savedTransacation = await newTransacation.save()
+
+//         return responder({
+//             res,
+//             success: true,
+//             data: savedTransacation,
+//             message: "transaction is added"
+//         })
+
+//     }
+//     catch (err) {
+
+//         return responder({
+//             res,
+//             success: false,
+//             message: (err.message)
+//         })
+
+
+
+//     }
+
+// }
+
+const postapitransactionv2 = async (req, res) => {
+
+    const { AcoountHoldelder,amount, type, category, description } = req.body
 
     const newTransacation = new Transaction({
 
-        amount, type, category, description
+        AcoountHoldelder, amount, type, category, description
 
 
     })
@@ -41,9 +78,6 @@ const postapitransaction = async (req, res) => {
             success: false,
             message: (err.message)
         })
-
-
-
     }
 
 }
@@ -61,4 +95,23 @@ const getapitransacation = async(req,res)=>{
     })
 }
 
-export { postapitransaction,getapitransacation,getapihealth }
+const getapitransacationUser = async(req,res)=>{
+
+    const { _id }= req.params
+
+    const userTransacation = await Transaction.find({AcoountHoldelder: _id }).populate('AcoountHoldelder')
+
+    userTransacation.forEach((transacation)=>{
+        transacation.AcoountHoldelder.passWord= undefined
+    })
+
+    res.json({
+
+        success:true,
+       data:userTransacation,
+     message:"successfully get all transaction "
+
+    })
+}
+
+export {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser }

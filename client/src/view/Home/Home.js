@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Navbar from '../../component/Navbar/Navbar'
 import './Home.css'
 import axios from 'axios'
+import showToast from 'crunchy-toast';
+
 
 const Home = () => {
   // amount, type, category, description
@@ -16,10 +18,6 @@ const addTransacation = async() =>{
 
   const userStore = JSON.parse(localStorage.getItem('userMoneyMinder'))
 
-
-  //AcoountHoldelder,amount, type, category, description
-
-
   const response = await axios.post('/api/v2/transaction',{
     AcoountHoldelder:userStore?._id,
       amount:amount,
@@ -28,7 +26,8 @@ const addTransacation = async() =>{
       description:description 
   })
 
-  alert(response?.data?.message)
+  showToast(response?.data?.message, 'success', 8000);
+
 
   if(response?.data.success)
   {
