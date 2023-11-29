@@ -4,6 +4,7 @@ import axios from 'axios'
 import "./Signup.css"
 import sign from './../../assets/signupbg.jpg';
 import {Link} from 'react-router-dom'
+import showToast from 'crunchy-toast';
 
 const Signup = () => {
   // userName,passWord,email,address,mobileNo,bankName
@@ -18,30 +19,37 @@ const Signup = () => {
   const signup = async () => {
 
     if (!userName) {
-      alert("Name is required")
+      
+    showToast("userName is required", 'danger', 8000);
+      
       return;
     }
     if (!passWord) {
-      alert("password is required")
+     showToast("Password is required", 'danger', 8000);
+      
       return;
     }
 
     if (!email) {
-      alert("email is required")
+      showToast("Email is required", 'danger', 8000);
+      
       return;
     }
 
     if (!address) {
-      alert("address is required")
+      showToast("Address is required", 'danger', 8000);
+      
       return;
     }
     if (!mobileNo) {
-      alert("mobileNo is required")
+      showToast("MobileNo is required", 'danger', 8000);
+      
       return;
     }
 
     if (!bankName) {
-      alert("BankName is required")
+      showToast("BankNAme is required", 'danger', 8000);
+      
       return;
     }
     const response = await axios.post('/api/v1/signups',
@@ -49,9 +57,9 @@ const Signup = () => {
         userName, passWord, email, mobileNo, bankName, address
       })
 
-    alert(response?.data?.message)
-
-      if(response?.data?.success){
+  
+    showToast(response?.data?.message, 'danger', 8000);
+      if(response?.data?.danger){
         window.location.href='/login'
       }
   }
@@ -62,7 +70,8 @@ const Signup = () => {
     console.log(loginUser)
 
       if(loginUser?.email){
-        alert("you already login")
+        showToast('you already login', 'success', 3000);
+    
         window.location.href="/"
 
       }

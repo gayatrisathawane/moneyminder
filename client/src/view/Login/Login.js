@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import Navbar from '../../component/Navbar/Navbar'
 import './Login.css'
 import axios from 'axios'
+import showToast from 'crunchy-toast';
 import { Link } from 'react-router-dom'
 
 const Login = () => {
@@ -17,8 +18,10 @@ const Login = () => {
     })
 
          
-       alert(response?.data?.message)
-         
+      
+       showToast(response?.data?.message, 'danger', 8000);
+
+
        if(response?.data?.success){
         localStorage.setItem('userMoneyMinder',JSON.stringify(response?.data?.data))
         window.location.href="/"
@@ -32,7 +35,7 @@ const Login = () => {
     console.log(loginUser)
 
       if(loginUser?.email){
-        alert("you already login")
+        showToast('you already login', 'success', 5000);
         window.location.href="/"
 
       }
