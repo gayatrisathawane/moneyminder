@@ -12,20 +12,30 @@ const Home = () => {
   const [description, setDescription] = useState('')
 
 
+const addTransacation = async() =>{
 
-const loadTransacation = async()=>{
+  const userStore = JSON.parse(localStorage.getItem('userMoneyMinder'))
 
-  const response = axios.post('/api/v1/transacation',{
-    amount,category,type,description
+
+  //AcoountHoldelder,amount, type, category, description
+
+
+  const response = await axios.post('/api/v2/transaction',{
+    AcoountHoldelder:userStore?._id,
+      amount:amount,
+      type:type ,
+     category:category,
+      description:description 
   })
 
-  if(response?.data?.response){
-    window.location.href='/mytransacation'
+  alert(response?.data?.message)
+
+  if(response?.data.success)
+  {
+      window.location.href="/mytransacation"
   }
-
-
-
 }
+
  
 
 
@@ -104,7 +114,7 @@ const loadTransacation = async()=>{
 
             <div class="d-grid gap-2">
             <button className="btn btn-primary mt-3"
-              type="button">Add Transacation </button>
+              type="button" onClick={addTransacation}>Add Transacation </button>
           </div>
 
           </div>

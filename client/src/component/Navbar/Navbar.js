@@ -23,7 +23,7 @@ const Navbar = () => {
     <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse d-flex justify-content-end " id="navbarNav">
+    <div className="collapse navbar-collapse d-flex justify-content-end  " id="navbarNav">
       <ul className="navbar-nav ">
         <li className="nav-item">
           <Link className="nav-link text-light ms-4 fs-5" aria-current="page" to="/"> Home</Link>
@@ -37,11 +37,12 @@ const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link text-light ms-4 fs-5" to="/login">Login</Link>
         </li>
-        
-      </ul>
-      <span className='text-light ms-4 fs-5'> 👋 Hello,{user.userName || 'User!'}</span>
+        <li className='text-light nav-link ms-4 fs-5'> 👋 Hello,{user.userName || 'User!'}</li>
      
 
+        
+      </ul>
+     
 
       {
         user.userName ?( <span className='text-light ms-3 fs-5 logout-link' onClick={()=>{
