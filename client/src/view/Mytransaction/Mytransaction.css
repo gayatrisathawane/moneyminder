@@ -1,0 +1,28 @@
+.my-transaction-container {
+    padding: 10px 20px;
+    box-shadow: 0px 0px 3px  rgb(69, 45, 251);
+    border-radius: 10px;
+    display: block;
+    margin: 10px 20px;
+    position: relative;
+  }
+
+  .credit-amount{
+    color:rgb(3, 99, 23);
+  }
+
+  .debit-amount{
+    color:rgb(227, 36, 36);
+  }
+  .category{
+    position: absolute;
+    top:10px;
+    right:15px;
+  }
+  .time-date{
+    position:absolute;
+    bottom:30px;
+    right:20px;
+    bottom:7px;
+    padding: 2px;
+  }

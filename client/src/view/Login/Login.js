@@ -17,11 +17,8 @@ const Login = () => {
       email,passWord
     })
 
-         
-      
+        
        showToast(response?.data?.message, 'danger', 8000);
-
-
        if(response?.data?.success){
         localStorage.setItem('userMoneyMinder',JSON.stringify(response?.data?.data))
         window.location.href="/"
@@ -37,9 +34,7 @@ const Login = () => {
       if(loginUser?.email){
         showToast('you already login', 'success', 5000);
         window.location.href="/"
-
       }
-
   },[])
   return (
     <div>
@@ -51,7 +46,8 @@ const Login = () => {
             <h3 className='text-center'>Login</h3>
 
             <div className="mb-3">
-              <input type="email" className="form-control"
+              <label className='mt-2'>Email</label>
+              <input type="email" className="form-control mt-1"
                 placeholder="Enter email here .... "
                 value={email}
                 onChange={(e) => {setEmail(e.target.value)}}
@@ -60,9 +56,10 @@ const Login = () => {
             </div>
 
             <div className="mb-3">
+              <label className='mt-2'>Password</label>
               <input type="password"
-                className="form-control"
-                placeholder='enter password here'
+                className="form-control mt-1"
+                placeholder='Enter password here'
                 value={passWord}
                 onChange={(e) => { setPassWord(e.target.value) }}
 
@@ -74,7 +71,7 @@ const Login = () => {
           </div>
             </div>
 
-            <p><Link to='/login'>Create a new account ?</Link></p>
+            <p className='text-center'><Link to='/signup' className='text-decoration-none '>Create a new account ?</Link></p>
             </div>
           </form>
         </div>

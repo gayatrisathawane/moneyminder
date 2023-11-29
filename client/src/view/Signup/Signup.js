@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom'
 import showToast from 'crunchy-toast';
 
 const Signup = () => {
-  // userName,passWord,email,address,mobileNo,bankName
 
   const [userName, setName] = useState('')
   const [passWord, setPassword] = useState('')
@@ -19,37 +18,30 @@ const Signup = () => {
   const signup = async () => {
 
     if (!userName) {
-      
     showToast("userName is required", 'danger', 8000);
-      
       return;
     }
     if (!passWord) {
      showToast("Password is required", 'danger', 8000);
-      
       return;
     }
 
     if (!email) {
       showToast("Email is required", 'danger', 8000);
-      
       return;
     }
 
     if (!address) {
       showToast("Address is required", 'danger', 8000);
-      
       return;
     }
     if (!mobileNo) {
-      showToast("MobileNo is required", 'danger', 8000);
-      
+      showToast(" MobileNo is required", 'danger', 8000);
       return;
     }
 
     if (!bankName) {
       showToast("BankNAme is required", 'danger', 8000);
-      
       return;
     }
     const response = await axios.post('/api/v1/signups',
@@ -59,6 +51,7 @@ const Signup = () => {
 
   
     showToast(response?.data?.message, 'danger', 8000);
+    
       if(response?.data?.danger){
         window.location.href='/login'
       }
@@ -82,15 +75,10 @@ const Signup = () => {
     <div>
       <Navbar />
       <div className='signup-container'>
-        <h1 className='text-center'>Sign up</h1>
-      </div>
-      <div className='row' >
-        <div className='col-md-2'></div>
-        <div className='col-md-4'>
-          <img src={sign} height="250px" alt='sign' />
-        </div>
-        <div className='col-md-4'>
 
+        <h2 className='text-center'>Sign up</h2>
+
+        <div className='mt-4'>
           <form>
             <div className="mb-3">
               <input type="text" className="form-control"
@@ -104,7 +92,7 @@ const Signup = () => {
             <div className="mb-3">
               <input type="password"
                 className="form-control"
-                placeholder='enter password here'
+                placeholder='Enter password here..'
                 value={passWord}
                 onChange={(e) => { setPassword(e.target.value) }}
 
@@ -112,7 +100,7 @@ const Signup = () => {
             </div>
 
             <div className="mb-3">
-              <input type="email"
+              <input type=" Enter Email here.."
                 className="form-control"
                 placeholder='email'
                 value={email}
@@ -121,7 +109,7 @@ const Signup = () => {
             <div className="mb-3">
               <input type="text"
                 className="form-control"
-                placeholder='mobile number'
+                placeholder=' Eneter Mobile Number ...'
                 value={mobileNo}
                 onChange={(e) => { setmobileNo(e.target.value) }}
               />
@@ -130,7 +118,7 @@ const Signup = () => {
             <div className="mb-3">
               <input type="text"
                 className="form-control"
-                placeholder='Address'
+                placeholder=' Enter Address Here...'
                 value={address}
                 onChange={(e) => { setAddress(e.target.value) }}
 
@@ -153,10 +141,11 @@ const Signup = () => {
           </div>
 
         </div>
-         <p><Link to='/login'>Have already account </Link></p>
+         <p className='text-center mt-2'><Link to='/login' className='text-decoration-none'>Have already account </Link></p>
+      </div>
       </div>
 
-    </div>
+  
   )
 }
 
