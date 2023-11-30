@@ -9,6 +9,7 @@ const Mytransaction = () => {
 
   const [creditSum, setCresditSum] = useState(0)
   const [debitSum, setDebitSum] = useState(0)
+  const [user,setUser]=useState({})
 
   const [transaction, setTransacation] = useState([])
 
@@ -22,11 +23,10 @@ const Mytransaction = () => {
     "other": "💁‍♀️"
   }
 
-  const user = JSON.parse(localStorage.getItem('userMoneyMinder'))
-
+  const userget = JSON.parse(localStorage.getItem('userMoneyMinder'))
 
   const loadUserTransaction = async () => {
-    const response = await axios.get(`/api/v1/transactions/${user._id}`)
+    const response = await axios.get(`/api/v1/transactions/${userget._id}`)
 
     const transacationData = response?.data?.data;
 
@@ -42,21 +42,26 @@ const Mytransaction = () => {
       }
     })
 
-
-
     setCresditSum(totalCredit)
     setDebitSum(totalDebit)
     setTransacation(response?.data?.data)
-
-
   }
 
   useEffect(() => {
     loadUserTransaction()
+  }, [userget._id])
 
 
+  useEffect(() => {
+    const storeUser = JSON.parse(localStorage.getItem('userMoneyMinder' || '{}'))
 
-  }, [user._id])
+    if (!storeUser) {
+      alert('you are not logged in !...')
+      window.location.href = '/login'
+
+
+    } 
+  }, [])
 
 
   return (

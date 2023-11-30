@@ -29,8 +29,7 @@ const Login = () => {
   useEffect(()=>{
 
     const loginUser = JSON.parse(localStorage.getItem('userMoneyMinder'))
-    console.log(loginUser)
-
+   
       if(loginUser?.email){
         showToast('you already login', 'success', 5000);
         window.location.href="/"
@@ -66,7 +65,7 @@ const Login = () => {
               />
 
            <div class="d-grid gap-2">
-            <button className="btn btn-primary mt-3"
+            <button className="btn button mt-3"
               type="button" onClick={login}>Login ➡</button>
           </div>
             </div>

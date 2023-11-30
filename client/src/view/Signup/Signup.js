@@ -136,7 +136,7 @@ const Signup = () => {
           </form>
 
           <div class="d-grid gap-2">
-            <button className="btn btn-primary mt-3"
+            <button className="btn button mt-3"
               type="button" onClick={signup}>SignUp</button>
           </div>
 

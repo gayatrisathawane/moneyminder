@@ -1,12 +1,6 @@
-.transacation-form-container{
-    display: block;
-    margin: 50px auto;
-    border: 1px solid black;
-    width: 500px;
-    padding:30px;
 
-}
-
-.logout-link{
-    cursor: pointer;
-}
+/* .homebg{
+    background-image: url('./../../assets/homebg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+} */

@@ -1,0 +1,9 @@
+.bg-nav{
+    /* background-color: #6a81f7; */
+    background-color: #51637f;
+}
+
+.nav-item:hover{
+    color:red !important;
+   transition:0.7s
+}
