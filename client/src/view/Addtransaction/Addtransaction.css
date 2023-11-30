@@ -1,7 +1,7 @@
 .transacation-form-container{
     display: block;
     margin: 50px auto;
-  box-shadow: 0 0 10px #51637f;
+     box-shadow: 0 0 10px #51637f;
     width: 500px;
     padding:30px;
     border-radius: 10px;
@@ -13,7 +13,7 @@
     cursor: pointer;
 }
 .add-transaction-container{
-    background-color: #e4edfb;
+    background-color: #eff3fb;
     padding: 10px;
   
     width: 100%;

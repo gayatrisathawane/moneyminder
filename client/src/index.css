@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #eff3fb;
 }
 
 code {
@@ -16,3 +17,5 @@ code {
   color: white !important;
   font-size: 20px !important;
 }
+
+

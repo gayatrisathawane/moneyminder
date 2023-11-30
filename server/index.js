@@ -5,6 +5,7 @@ dotenv.config()
 const app = express();
 import {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser} from './Controllers/transacation.js';
 import {postapisignup,getapisignup,postapilogin,postapisignupv2} from './Controllers/user.controller.js'
+import Transaction from './models/Transacation.model.js';
 
 
 
@@ -45,6 +46,20 @@ app.post('/api/v1/signups',postapisignup)
 app.post('/api/v2/signups',postapisignupv2)
 app.get('/api/v1/signups/:_id',getapisignup)
 app.post('/api/v1/logins',postapilogin)
+
+
+
+app.delete('/api/transactions/:_id', async(req,res)=>{
+
+    const { _id } = req.params
+
+    await Transaction.deleteOne({ _id:_id })
+
+    res.json({
+        success:true,
+        message:"delete transaction successfully "
+    })
+ })
 
 
 

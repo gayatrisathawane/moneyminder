@@ -5,5 +5,9 @@
 
 .nav-item:hover{
     color:red !important;
-   transition:0.7s
+   transition:0.7s;
+ 
+}
+.nav-item{
+    font-weight: bold;
 }

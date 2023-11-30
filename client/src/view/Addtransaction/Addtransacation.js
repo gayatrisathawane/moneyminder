@@ -5,20 +5,16 @@ import showToast from 'crunchy-toast';
 import './Addtransaction.css'
 import Navbar from '../../component/Navbar/Navbar';
 
-
-
-
 const Addtransacation = () => {
     const [amount, setAmount] = useState('')
     const [type, setType] = useState('')
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
   
-  
   const addTransacation = async() =>{
-  
+
     const userStore = JSON.parse(localStorage.getItem('userMoneyMinder'))
-  
+
     const response = await axios.post('/api/v2/transaction',{
       AcoountHoldelder:userStore?._id,
         amount:amount,
@@ -35,6 +31,9 @@ const Addtransacation = () => {
         window.location.href="/mytransacation"
     }
   }
+
+
+  
   
   return (
     <div>

@@ -26,3 +26,12 @@
     bottom:7px;
     padding: 2px;
   }
+
+  .delete-icon{
+    cursor: pointer;
+    background-color: rgb(198, 9, 9);
+    color:#fff;
+    padding:7px;
+    border-radius: 3px;
+    font-weight: bold;
+  }

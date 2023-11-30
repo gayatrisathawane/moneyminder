@@ -72,6 +72,18 @@ const Mytransaction = () => {
   }, [])
 
 
+  const deleteTransaction = async(id)=>{
+
+    const response= await axios.delete(`/api/transactions/${id}`)
+
+    if(response?.data?.success){
+      loadUserTransaction()
+
+    }
+      
+
+  }
+
 
   return (
     <div>
@@ -86,8 +98,9 @@ const Mytransaction = () => {
 
       {
         transaction?.map((transaction, index) => {
+          
           const { _id, amount, type, category, description, createdAt } = transaction;
-
+        
           const date = new Date(createdAt).toLocaleDateString()
           const time = new Date(createdAt).toLocaleTimeString()
           return (
@@ -106,6 +119,12 @@ const Mytransaction = () => {
 
               <hr />
               <p>{description}</p>
+
+              <span onClick={( )=>{
+                deleteTransaction( _id)
+
+              }} className='delete-icon'>❌ Delete</span>
+              <span className='ms-5'>✏ Edit</span>
 
 
 
