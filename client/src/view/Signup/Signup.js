@@ -78,7 +78,7 @@ const Signup = () => {
 
         <h2 className='text-center'>Sign up</h2>
 
-        <div className='mt-4'>
+        <div className='mt-3'>
           <form>
             <div className="mb-3">
               <input type="text" className="form-control"
@@ -127,10 +127,10 @@ const Signup = () => {
 
             <div>
               <select class="form-select" value={bankName} onChange={(e) => { setBankName(e.target.value) }}>
-                <option selected>Bank Name </option>
+                <option  value="" selected disabled hidden >Bank Name </option>
                 <option value="SBI">SBI</option>
                 <option value="canera">Canera</option>
-                <option value="">Three</option>
+                <option value="maharatra">Maharatra</option>
               </select>
             </div>
           </form>

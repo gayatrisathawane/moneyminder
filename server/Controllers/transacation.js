@@ -114,4 +114,40 @@ const getapitransacationUser = async(req,res)=>{
     })
 }
 
-export {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser }
+
+const deleteapitransacation = async(req,res)=>{
+
+    const { _id } = req.params
+
+    await Transaction.deleteOne({ _id:_id })
+
+    res.json({
+        success:true,
+        message:"delete transaction successfully "
+    })
+ }
+
+ const putapitransacation= async(req,res)=>{
+
+    const { _id }=req.params;
+
+    const{   amount, type, category, description }= req.body
+
+     await Transaction.updateOne({_id:_id},{ $set:{
+
+        amount, type, category, description
+
+     }})
+
+     const updateTransaction = await Transaction.findOne({_id:_id})
+
+     return res.json({
+        success:true,
+        message:"update transacation",
+        data:updateTransaction
+        
+     })
+
+ }
+
+export {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser,deleteapitransacation,putapitransacation }

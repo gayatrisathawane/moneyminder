@@ -13,6 +13,7 @@ import Signup from './view/Signup/Signup.js'
 import Login from './view/Login/Login.js'
 import Mytransaction from './view/Mytransaction/Mytransaction.js'
 import Addtransacation from './view/Addtransaction/Addtransacation';
+import Updatetransacation from './view/Updatetransacation/Updatetransacation';
 
 
 
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
   {
     path: "/addtransaction",
     element:<Addtransacation/>
+
+  },
+  {
+    path: "/updatetransaction/:id",
+    element:<Updatetransacation/>
 
   }
 ]);

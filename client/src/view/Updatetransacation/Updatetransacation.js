@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import React from 'react'
+import { useState } from 'react';
 import axios from 'axios'
 import showToast from 'crunchy-toast';
-import './Addtransaction.css'
+import './Updatetransacation.css'
 import Navbar from '../../component/Navbar/Navbar';
 
-const Addtransacation = () => {
+const Updatetransacation = () => {
     const [amount, setAmount] = useState('')
     const [type, setType] = useState('')
     const [category, setCategory] = useState('')
@@ -47,7 +47,7 @@ const Addtransacation = () => {
         <form>
     
           <div className='transacation-form-container'>
-          <h3 className='text-center'>ADD TRANSACATION</h3>
+          <h3 className='text-center'>UPDATE TRANSACATION</h3>
             <div className="mb-3">
              <label className='fs-5 fw-bold'> Amount</label>
               <input type="Number" className="form-control mt-1"
@@ -69,7 +69,7 @@ const Addtransacation = () => {
 
                   }
                 }}
-              /> <span className='fs-5'>Credited</span> 
+              />  Credited
               <input type="radio"
                 className='ms-3'
                 name="amounttype"
@@ -81,7 +81,7 @@ const Addtransacation = () => {
 
                   }
                 }}
-              /> <span className='fs-5'>Debited</span> 
+              />  Debited
 
             </div>
             <div className="mb-3 mt-1" >
@@ -113,7 +113,7 @@ const Addtransacation = () => {
 
             <div class="d-grid gap-2">
             <button className="btn button mt-3"
-              type="button" onClick={addTransacation}>Add Transacation </button>
+              type="button" onClick={addTransacation}>Update Transacation </button>
           </div>
 
           </div>
@@ -125,4 +125,5 @@ const Addtransacation = () => {
   )
 }
 
-export default Addtransacation
+export default Updatetransacation
+

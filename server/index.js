@@ -3,15 +3,21 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 const app = express();
-import {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser} from './Controllers/transacation.js';
+import {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser,deleteapitransacation,putapitransacation} from './Controllers/transacation.js';
 import {postapisignup,getapisignup,postapilogin,postapisignupv2} from './Controllers/user.controller.js'
 import Transaction from './models/Transacation.model.js';
+
+import path from 'path';
 
 
 
 app.use(express.json())
 
+const __dirname = path.resolve();
+
 //mongoDb connection
+
+const PORT = process.env.PORT || 5000
 
 const mongoDB = async () => {
 
@@ -49,22 +55,21 @@ app.post('/api/v1/logins',postapilogin)
 
 
 
-app.delete('/api/transactions/:_id', async(req,res)=>{
-
-    const { _id } = req.params
-
-    await Transaction.deleteOne({ _id:_id })
-
-    res.json({
-        success:true,
-        message:"delete transaction successfully "
-    })
- })
+app.delete('/api/transactions/:_id', deleteapitransacation)
+app.put('/api/transacation/:_id',putapitransacation)
 
 
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
-const PORT = process.env.PORT || 5000
+
+
 
 app.listen(PORT, () => {
     console.log(`port running on ${PORT}`)

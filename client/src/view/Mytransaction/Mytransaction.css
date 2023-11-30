@@ -31,7 +31,32 @@
     cursor: pointer;
     background-color: rgb(198, 9, 9);
     color:#fff;
-    padding:7px;
+    padding:5px 10px;
     border-radius: 3px;
     font-weight: bold;
+  }
+
+  .edit-icon{
+    background-color: green;
+    padding:5px 10px;
+    font-weight: bold;
+    color:#fff;
+    border-radius: 5px;
+  }
+
+  .sum-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+  }
+
+  .sum{
+    /* border: 1px solid black; */
+    width:300px;
+    padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px grey;
+   
+    padding: 10px;
   }

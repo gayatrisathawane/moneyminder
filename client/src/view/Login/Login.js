@@ -45,7 +45,7 @@ const Login = () => {
             <h3 className='text-center'>Login</h3>
 
             <div className="mb-3">
-              <label className='mt-2'>Email</label>
+              <label className='mt-2 fs-5'>Email</label>
               <input type="email" className="form-control mt-1"
                 placeholder="Enter email here .... "
                 value={email}
@@ -55,7 +55,7 @@ const Login = () => {
             </div>
 
             <div className="mb-3">
-              <label className='mt-2'>Password</label>
+              <label className='mt-2 fs-5'>Password</label>
               <input type="password"
                 className="form-control mt-1"
                 placeholder='Enter password here'

@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../component/Navbar/Navbar'
 import Transaction from './../../component/Transaction/Transaction.js'
 import axios from "axios"
@@ -8,7 +8,7 @@ const Mytransaction = () => {
 
   const [creditSum, setCresditSum] = useState(0)
   const [debitSum, setDebitSum] = useState(0)
-  const [user,setUser]=useState({})
+  const [user, setUser] = useState({})
 
   const [transaction, setTransacation] = useState([])
 
@@ -27,7 +27,7 @@ const Mytransaction = () => {
 
     const userStore = JSON.parse(localStorage.getItem('userMoneyMinder'))
 
-     const userId= userStore._id
+    const userId = userStore._id
 
     const response = await axios.get(`/api/v1/transactions/${userId}`)
 
@@ -55,7 +55,7 @@ const Mytransaction = () => {
   }, [user])
 
 
-  
+
   useEffect(() => {
     const storeUser = JSON.parse(localStorage.getItem('userMoneyMinder' || '{}'))
 
@@ -72,15 +72,15 @@ const Mytransaction = () => {
   }, [])
 
 
-  const deleteTransaction = async(id)=>{
+  const deleteTransaction = async (id) => {
 
-    const response= await axios.delete(`/api/transactions/${id}`)
+    const response = await axios.delete(`/api/transactions/${id}`)
 
-    if(response?.data?.success){
+    if (response?.data?.success) {
       loadUserTransaction()
 
     }
-      
+
 
   }
 
@@ -88,19 +88,20 @@ const Mytransaction = () => {
   return (
     <div>
       <Navbar />
-      <p className='text-center fs-2 mt-3'> MY TRANSACTION </p>
-
-          <h3>Creditum:-{creditSum}</h3>  
-          <h3>Debitsum:{debitSum}</h3>
-    
+      <p className='text-center fs-1 mt-3 '> MY TRANSACTION </p>
 
 
+      <div className='sum-container'>
+        <h3 className='sum'>CrediredSum:-{creditSum}</h3>
+        <h3 className='sum'>DebitedSum:{debitSum}</h3>
+
+      </div>
 
       {
         transaction?.map((transaction, index) => {
-          
+
           const { _id, amount, type, category, description, createdAt } = transaction;
-        
+
           const date = new Date(createdAt).toLocaleDateString()
           const time = new Date(createdAt).toLocaleTimeString()
           return (
@@ -120,11 +121,12 @@ const Mytransaction = () => {
               <hr />
               <p>{description}</p>
 
-              <span onClick={( )=>{
-                deleteTransaction( _id)
+              <span onClick={() => {
+                deleteTransaction(_id)
 
-              }} className='delete-icon'>❌ Delete</span>
-              <span className='ms-5'>✏ Edit</span>
+              }} className='delete-icon'>Delete</span>
+
+              <span className='ms-5 edit-icon'>Edit</span>
 
 
 
