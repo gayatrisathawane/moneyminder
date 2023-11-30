@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useState , useEffect} from 'react'
 import Navbar from '../../component/Navbar/Navbar'
 import Transaction from './../../component/Transaction/Transaction.js'
 import axios from "axios"
@@ -23,10 +22,14 @@ const Mytransaction = () => {
     "other": "💁‍♀️"
   }
 
-  const userget = JSON.parse(localStorage.getItem('userMoneyMinder'))
 
   const loadUserTransaction = async () => {
-    const response = await axios.get(`/api/v1/transactions/${userget._id}`)
+
+    const userStore = JSON.parse(localStorage.getItem('userMoneyMinder'))
+
+     const userId= userStore._id
+
+    const response = await axios.get(`/api/v1/transactions/${userId}`)
 
     const transacationData = response?.data?.data;
 
@@ -49,19 +52,25 @@ const Mytransaction = () => {
 
   useEffect(() => {
     loadUserTransaction()
-  }, [userget._id])
+  }, [user])
 
 
+  
   useEffect(() => {
     const storeUser = JSON.parse(localStorage.getItem('userMoneyMinder' || '{}'))
 
-    if (!storeUser) {
+    if (storeUser?.email) {
+
+      setUser(storeUser)
+
+    } else {
+
       alert('you are not logged in !...')
       window.location.href = '/login'
 
-
-    } 
+    }
   }, [])
+
 
 
   return (

@@ -52,7 +52,7 @@ const Signup = () => {
   
     showToast(response?.data?.message, 'danger', 8000);
     
-      if(response?.data?.danger){
+      if(response?.data?.success){
         window.location.href='/login'
       }
   }

@@ -12,9 +12,14 @@ const Home = () => {
 
   return (
 
-    <div className='homebg'>
+    <div >
       <Navbar />
-      <h1 className='text-center'> 💰 MoneyMinder 💵</h1>
+      <div className='homebg'>
+      <h3 className=''> 💰 MoneyMinder 💵</h3>
+      <p>lorem jhgfddfghj kjhgfdghjk jhgfghjk kjhgfdfghyu kjyhtfdftyui</p>
+
+      </div>
+     
 
      
 
