@@ -1,7 +1,7 @@
 import Transaction from "./../models/Transacation.model.js";
 import { responder } from "./../utities.js";
 
-const getapihealth =async (req, res) => {
+const getapihealth = async (req, res) => {
 
     responder({
         res,
@@ -50,7 +50,7 @@ const getapihealth =async (req, res) => {
 
 const postapitransactionv2 = async (req, res) => {
 
-    const { AcoountHoldelder,amount, type, category, description } = req.body
+    const { AcoountHoldelder, amount, type, category, description } = req.body
 
     const newTransacation = new Transaction({
 
@@ -83,71 +83,69 @@ const postapitransactionv2 = async (req, res) => {
 }
 
 
-const getapitransacation = async(req,res)=>{
+const getapitransacation = async (req, res) => {
 
     const allTransaction = await Transaction.find()
 
     responder({
         res,
-        success:true,
-        data:allTransaction,
-        message:"successfully get all transaction "
+        success: true,
+        data: allTransaction,
+        message: "successfully get all transaction "
     })
 }
 
-const getapitransacationUser = async(req,res)=>{
-
-    const { _id }= req.params
-
-    const userTransacation = await Transaction.find({AcoountHoldelder: _id }).populate('AcoountHoldelder')
-
-    userTransacation.forEach((transacation)=>{
-        transacation.AcoountHoldelder.passWord= undefined
-    })
-
-    res.json({
-
-        success:true,
-       data:userTransacation,
-     message:"successfully get all transaction "
-
-    })
-}
-
-
-const deleteapitransacation = async(req,res)=>{
+const getapitransacationUser = async (req, res) => {
 
     const { _id } = req.params
 
-    await Transaction.deleteOne({ _id:_id })
+    const userTransacation = await Transaction.find({ AcoountHoldelder: _id }).populate('AcoountHoldelder')
+
+    userTransacation.forEach((transacation) => {
+        transacation.AcoountHoldelder.passWord = undefined
+    })
 
     res.json({
-        success:true,
-        message:"delete transaction successfully "
+
+        success: true,
+        data: userTransacation,
+        message: "successfully get all transaction "
+
     })
- }
+}
 
- const putapitransacation= async(req,res)=>{
 
-    const { _id }=req.params;
+const deleteapitransacation = async (req, res) => {
 
-    const{   amount, type, category, description }= req.body
+    const { _id } = req.params
 
-     await Transaction.updateOne({_id:_id},{ $set:{
+    await Transaction.deleteOne({ _id: _id })
 
-        amount, type, category, description
+    res.json({
+        success: true,
+        message: "delete transaction successfully "
+    })
+}
 
-     }})
+const putapitransacation = async (req, res) => {
 
-     const updateTransaction = await Transaction.findOne({_id:_id})
+    const { _id } = req.params;
 
-     return res.json({
-        success:true,
-        message:"update transacation",
-        data:updateTransaction
-        
-     })
+    const { AcoountHoldelder, amount, type, category, description } = req.body;
 
- }
+    await Transaction.updateOne({ _id: _id }, {
+        $set: {AcoountHoldelder, amount, type, category, description }
+    })
 
-export {getapitransacation,getapihealth,postapitransactionv2,getapitransacationUser,deleteapitransacation,putapitransacation }
+    const updateTransaction = await Transaction.findOne({ _id: _id })
+
+    return res.json({
+        success: true,
+        data: updateTransaction,
+        message: "update transacation"
+
+    })
+
+}
+
+export { getapitransacation, getapihealth, postapitransactionv2, getapitransacationUser, deleteapitransacation, putapitransacation }

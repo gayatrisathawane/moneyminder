@@ -56,7 +56,7 @@ app.post('/api/v1/logins',postapilogin)
 
 
 app.delete('/api/transactions/:_id', deleteapitransacation)
-app.put('/api/transacation/:_id',putapitransacation)
+app.put('/api/transactions/:_id',putapitransacation)
 
 
 
