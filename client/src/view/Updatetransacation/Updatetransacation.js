@@ -1,9 +1,11 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams} from 'react-router-dom';
 import axios from 'axios'
 import showToast from 'crunchy-toast';
 import './Updatetransacation.css'
 import Navbar from '../../component/Navbar/Navbar';
+import { response } from 'express';
 
 const Updatetransacation = () => {
     const [amount, setAmount] = useState('')
@@ -11,26 +13,49 @@ const Updatetransacation = () => {
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
   
-  const addTransacation = async() =>{
+ 
 
-    const userStore = JSON.parse(localStorage.getItem('userMoneyMinder'))
+      const { _id } = useParams();
+  
+      const setfield = async () => {
 
-    const response = await axios.post('/api/v2/transaction',{
-      AcoountHoldelder:userStore?._id,
-        amount:amount,
-        type:type ,
-       category:category,
-        description:description 
-    })
+          const response = await axios.get(`/api/transactions/${_id}`)
+          const { amount, type, category, description } = response.data.data
+
+          setAmount(amount)
+          setType(type)
+          setCategory(category)
+          setDescription(description)
+        
   
-    showToast(response?.data?.message, 'success', 8000);
+      }
   
+      useEffect (()=>{
+          setfield()
   
-    if(response?.data.success)
-    {
-        window.location.href="/mytransacation"
-    }
-  }
+      }, [] )
+  
+        const updateTransaction = async()=>{
+  
+          const updateObj = {amount, type, category, description}
+  
+          await axios.put(`/api/transactions/${ _id}` ,updateObj)
+  
+         
+  
+         showToast("update successfully........!")
+  
+        setAmount('')
+        setType('')
+        setCategory('')
+        setDescription('')
+
+
+        if(response.data.data){
+          window.location.href='/mytransacation'
+        }
+  
+        }
 
 
   
@@ -113,7 +138,7 @@ const Updatetransacation = () => {
 
             <div class="d-grid gap-2">
             <button className="btn button mt-3"
-              type="button" onClick={addTransacation}>Update Transacation </button>
+              type="button" onClick={ updateTransaction }>Update Transacation </button>
           </div>
 
           </div>

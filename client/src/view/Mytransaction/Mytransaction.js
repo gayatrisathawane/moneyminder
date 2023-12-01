@@ -85,6 +85,10 @@ const Mytransaction = () => {
   }
 
 
+
+  
+
+
   return (
     <div>
       <Navbar />
@@ -126,7 +130,11 @@ const Mytransaction = () => {
 
               }} className='delete-icon'>Delete</span>
 
-              <span className='ms-5 edit-icon'>Edit</span>
+              <span className='ms-5 edit-icon' onClick={() => {
+                                    window.open(`/updatetransaction/${_id}`)
+                                }}
+
+              >Edit</span>
 
 
 

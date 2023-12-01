@@ -43,7 +43,7 @@ const router = createBrowserRouter([
 
   },
   {
-    path: "/updatetransaction/:id",
+    path: "/updatetransaction/:_id",
     element:<Updatetransacation/>
 
   }

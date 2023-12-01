@@ -142,7 +142,7 @@ const putapitransacation = async (req, res) => {
     return res.json({
         success: true,
         data: updateTransaction,
-        message: "update transacation"
+        message:" update transacation"
 
     })
 
